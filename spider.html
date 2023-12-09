@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lan="es">
+    <head>
+
+       <title> PPR </title>
+       <link rel="stylesheet" type="text/css" href="estilo.css">
+        <img class="logo" src="logo.png">
+    </head>
+    <center>   
+    <h1 class="titulo"> CAMISETA 2024 - 2026 </h1>
+    <h3>Tienes 4 opciones:</h3>
+    <style>
+                span {
+                    color: wheat;
+                }
+                .titulo {
+                    background-color: #000000; 
+                    color: white; 
+                    padding: 10px;
+                    text-align: center;
+                }
+                section img {
+                    width: 0px;
+                    flex-grow: 1;
+                    object-fit: cover;
+                    opacity: .8;
+                    transition: .5s ease;
+                    border: 2px solid white;
+                }
+
+                section img:hover {
+                    cursor: crosshair;
+                    width: 300px;
+                    opacity: 1;
+                    filter: contrast(120%);
+                }
+                section {
+                    display: flex; 
+                    width: 600px;
+                    height: 430px;
+                }
+
+                section img {
+                    width: 0px;
+                    flex-grow: 1;
+                    object-fit: cover;
+                    opacity: 0.8;
+                }
+
+                section img:hover {
+                    cursor: crosshair;
+                    width: 300px;
+                    opacity: 1;
+                    filter: contrast(120%);
+                }
+                .logo {
+                    width: 200px;
+                    height: auto; 
+}
+    </style>
+    </center>
+    <body bgcolor="#333333">
+        
+    <center>
+        <section>
+                <img src="img/CAMISETA1.jpg" onclick="elegirCamiseta(1)">
+                <img src="img/CAMISETA2.jpg" onclick="elegirCamiseta(2)">
+                <img src="img/CAMISETA3.jpg" onclick="elegirCamiseta(3)">
+                <img src="img/CAMISETA4.jpg" onclick="elegirCamiseta(4)">
+        </section>
+        <h6>Autor: Nehemias Samuel Huayaney</h6>
+    </center>
+    <script>
+        function elegirCamiseta(numero) {
+                    var opcionAnterior = localStorage.getItem('opcion_camiseta');
+                    if (opcionAnterior === null) {
+                        alert("Has elegido la camiseta número: " + numero);
+                        localStorage.setItem('opcion_camiseta', numero);
+                    } else if (opcionAnterior === numero.toString()) {
+                        alert("Ya has seleccionado esta camiseta.");
+                    } else {
+                        var confirmarCambiar = confirm("Ya has seleccionado otra camiseta. ¿Deseas cambiar a la camiseta número " + numero + "?");
+                        if (confirmarCambiar) {
+                            localStorage.setItem('opcion_camiseta', numero);
+                            alert("Has cambiado la selección a la camiseta número: " + numero);
+                        } else {
+                            alert("Manteniendo la selección actual.");
+                        }
+                    }
+            }
+
+            window.onload = function() {
+                    var opcionGuardada = localStorage.getItem('opcion_camiseta');
+                    if (opcionGuardada !== null) {
+                        alert("Ya habías elegido la camiseta número: " + opcionGuardada);
+            }
+        }
+
+    </script>
+    </body>
+</html>
